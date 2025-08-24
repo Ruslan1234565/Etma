@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Etma - Wellness Website
+
+A modern wellness and beauty website built with Next.js, featuring interactive carousels, responsive design, and a clean user interface.
+
+## Features
+
+- **Interactive Carousel**: Press testimonials with smooth navigation
+- **Responsive Design**: Works perfectly on all devices
+- **Modern UI**: Clean, professional design with Tailwind CSS
+- **TypeScript**: Full type safety throughout the application
+- **Next.js 15**: Latest features and optimizations
+- **Authentication**: NextAuth.js integration
+- **API Routes**: RESTful API endpoints
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── (withnav)/         # Pages with navigation
+│   ├── (withoutnav)/      # Auth pages
+│   └── api/               # API routes
+├── components/            # Reusable UI components
+│   ├── layout/           # Layout components
+│   └── ui/               # Base UI components
+├── features/             # Feature-based modules
+│   ├── interface/        # TypeScript interfaces
+│   ├── pages/           # Page-specific components
+│   ├── service/         # Data services
+│   └── shared/          # Shared utilities
+└── lib/                 # Utility functions
+```
+
+## Technologies Used
+
+- [Next.js 15](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Embla Carousel](https://www.embla-carousel.com/) - Carousel functionality
+- [NextAuth.js](https://next-auth.js.org/) - Authentication
+- [Lucide React](https://lucide.dev/) - Icons
+
+## Carousel Implementation
+
+The press section features an interactive carousel built with Embla Carousel:
+
+- Smooth transitions between testimonials
+- Navigation arrows and dot indicators
+- Responsive design for all screen sizes
+- Keyboard navigation support
+- Auto-loop functionality
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Embla Carousel Documentation](https://www.embla-carousel.com/)
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
