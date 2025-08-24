@@ -1,6 +1,5 @@
 import { Episode } from "@/features/interface/journal";
 
-
 interface JournalCardProps {
   id: number;
 }
@@ -16,15 +15,38 @@ export default async function JournalCard({ id }: JournalCardProps) {
     const data: Episode = await response.json();
 
     return (
-      <div className="border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
-        <h3 className="font-bold text-lg mb-2">{data.name}</h3>
-        <p className="text-gray-600 mb-1">Air Date: {data.air_date}</p>
-        <p className="text-gray-600 mb-1">Episode: {data.episode}</p>
+      <div style={{
+        border: '1px solid #ddd',
+        borderRadius: '8px',
+        padding: '15px',
+        backgroundColor: 'white',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        cursor: 'pointer'
+      }}>
+        <h3 style={{ 
+          fontSize: '18px', 
+          fontWeight: 'bold', 
+          marginBottom: '10px',
+          color: '#333'
+        }}>
+          {data.name}
+        </h3>
+        <p style={{ color: '#666', marginBottom: '5px' }}>
+          <strong>Episode:</strong> {data.episode}
+        </p>
+        <p style={{ color: '#666', marginBottom: '5px' }}>
+          <strong>Air Date:</strong> {data.air_date}
+        </p>
+        <p style={{ color: '#666', marginBottom: '5px' }}>
+          <strong>Characters:</strong> {data.characters.length}
+        </p>
         {data.url && (
-          <p className="text-blue-500 text-sm truncate">URL: {data.url}</p>
+          <p style={{ color: '#0066cc', fontSize: '12px', marginTop: '10px' }}>
+            URL: {data.url}
+          </p>
         )}
         {data.created && (
-          <p className="text-gray-500 text-xs mt-2">
+          <p style={{ color: '#999', fontSize: '12px', marginTop: '5px' }}>
             Created: {new Date(data.created).toLocaleDateString()}
           </p>
         )}
@@ -33,8 +55,13 @@ export default async function JournalCard({ id }: JournalCardProps) {
   } catch (error) {
     console.error(`Failed to fetch episode ${id}:`, error);
     return (
-      <div className="border rounded-lg p-4 bg-red-50">
-        <p className="text-red-500">Error loading episode {id}</p>
+      <div style={{
+        border: '1px solid #ffcccc',
+        borderRadius: '8px',
+        padding: '15px',
+        backgroundColor: '#fff5f5'
+      }}>
+        <p style={{ color: '#cc0000' }}>Error loading episode {id}</p>
       </div>
     );
   }

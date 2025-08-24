@@ -15,16 +15,24 @@ export default async function Journal() {
     }
     
     const data: ApiResponse = await response.json();
-    console.log(data.results);
-    
-
 
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">Journal Episodes</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <h1 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>
+          Rick and Morty Episodes
+        </h1>
+        
+        <p style={{ textAlign: 'center', marginBottom: '30px', color: '#666' }}>
+          All episodes from Rick and Morty show
+        </p>
+
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+          gap: '20px' 
+        }}>
           {data.results.map((episode: Episode) => (
-            <Link href={`/journal/${episode.id}`} key={episode.id}>
+            <Link href={`/journal/${episode.id}`} key={episode.id} style={{ textDecoration: 'none' }}>
               <JournalCard id={episode.id} />
             </Link>
           ))}
@@ -34,9 +42,11 @@ export default async function Journal() {
   } catch (error) {
     console.error('Failed to fetch episodes:', error);
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">Journal Episodes</h1>
-        <p className="text-red-500">
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '20px' }}>
+          Rick and Morty Episodes
+        </h1>
+        <p style={{ color: 'red', fontSize: '18px' }}>
           Error loading episodes. Please try again later.
         </p>
       </div>

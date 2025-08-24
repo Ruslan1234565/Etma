@@ -10,7 +10,6 @@ export default async function Footer() {
   let footer = fallbackFooter;
   
   try {
-    // Use relative URL for server-side fetching within the same domain
     const response = await fetch('/api/footer', {
       method: 'GET',
       headers: {
@@ -23,7 +22,6 @@ export default async function Footer() {
     }
   } catch (error) {
     console.error('Failed to fetch footer data:', error);
-    // Use fallback footer data if fetch fails
   }
 
   return (

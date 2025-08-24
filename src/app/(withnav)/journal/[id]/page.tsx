@@ -16,70 +16,86 @@ export default async function JournalId({ params }: JournalIdProps) {
     const episode: Episode = await response.json();
 
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
         <Link 
           href="/journal" 
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6"
+          style={{ 
+            display: 'inline-block',
+            color: '#0066cc',
+            textDecoration: 'none',
+            marginBottom: '20px',
+            fontSize: '16px'
+          }}
         >
-          ← Back to Episodes
+          ← Back
         </Link>
         
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-4xl font-bold mb-6">{episode.name}</h1>
+        <div style={{
+          border: '1px solid #ddd',
+          borderRadius: '8px',
+          padding: '20px',
+          backgroundColor: 'white',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}>
+          <h1 style={{ 
+            fontSize: '28px', 
+            fontWeight: 'bold', 
+            marginBottom: '20px',
+            color: '#333'
+          }}>
+            {episode.name}
+          </h1>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-700">Episode</h3>
-                <p className="text-xl">{episode.episode}</p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold text-gray-700">Air Date</h3>
-                <p className="text-xl">{episode.air_date}</p>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              {episode.url && (
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700">URL</h3>
-                  <a 
-                    href={episode.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 break-all"
-                  >
-                    {episode.url}
-                  </a>
-                </div>
-              )}
-              
-              {episode.created && (
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700">Created</h3>
-                  <p className="text-xl">
-                    {new Date(episode.created).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit'
-                    })}
-                  </p>
-                </div>
-              )}
-            </div>
+          <div style={{ marginBottom: '20px' }}>
+            <p style={{ fontSize: '16px', marginBottom: '10px' }}>
+              <strong>Episode:</strong> {episode.episode}
+            </p>
+            <p style={{ fontSize: '16px', marginBottom: '10px' }}>
+              <strong>Air Date:</strong> {episode.air_date}
+            </p>
+            <p style={{ fontSize: '16px', marginBottom: '10px' }}>
+              <strong>Characters:</strong> {episode.characters.length} characters
+            </p>
+            {episode.url && (
+              <p style={{ fontSize: '16px', marginBottom: '10px' }}>
+                <strong>URL:</strong> 
+                <a 
+                  href={episode.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ color: '#0066cc', marginLeft: '5px' }}
+                >
+                  {episode.url}
+                </a>
+              </p>
+            )}
+            {episode.created && (
+              <p style={{ fontSize: '16px', marginBottom: '10px' }}>
+                <strong>Created:</strong> {new Date(episode.created).toLocaleDateString()}
+              </p>
+            )}
           </div>
           
           {episode.characters && episode.characters.length > 0 && (
             <div>
-              <h3 className="text-2xl font-semibold mb-4">Characters</h3>
-              <p className="text-gray-600 mb-2">
+              <h2 style={{ 
+                fontSize: '20px', 
+                fontWeight: 'bold', 
+                marginBottom: '15px',
+                color: '#333'
+              }}>
+                Characters in this Episode
+              </h2>
+              <p style={{ color: '#666', marginBottom: '15px' }}>
                 This episode features {episode.characters.length} characters.
               </p>
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-sm text-gray-500">
+              <div style={{
+                backgroundColor: '#f5f5f5',
+                padding: '15px',
+                borderRadius: '5px',
+                border: '1px solid #ddd'
+              }}>
+                <p style={{ color: '#666', fontSize: '14px' }}>
                   Character details can be fetched from their individual URLs
                 </p>
               </div>
@@ -91,19 +107,51 @@ export default async function JournalId({ params }: JournalIdProps) {
   } catch (error) {
     console.error('Failed to fetch episode:', error);
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
         <Link 
           href="/journal" 
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6"
+          style={{ 
+            display: 'inline-block',
+            color: '#0066cc',
+            textDecoration: 'none',
+            marginBottom: '20px',
+            fontSize: '16px'
+          }}
         >
           ← Back to Episodes
         </Link>
         
-        <div className="bg-red-50 border border-red-200 rounded-lg p-8">
-          <h1 className="text-2xl font-bold text-red-800 mb-4">Error</h1>
-          <p className="text-red-600">
-            Failed to load episode details. Please try again later.
+        <div style={{
+          border: '1px solid #ffcccc',
+          borderRadius: '8px',
+          padding: '20px',
+          backgroundColor: '#fff5f5',
+          textAlign: 'center'
+        }}>
+          <h1 style={{ 
+            fontSize: '24px', 
+            fontWeight: 'bold', 
+            marginBottom: '15px',
+            color: '#cc0000'
+          }}>
+            Episode Not Found
+          </h1>
+          <p style={{ color: '#cc0000', fontSize: '16px', marginBottom: '15px' }}>
+            We couldn't find the episode you're looking for.
           </p>
+          <Link 
+            href="/journal"
+            style={{
+              backgroundColor: '#cc0000',
+              color: 'white',
+              padding: '10px 20px',
+              borderRadius: '5px',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
+            Back to Episodes
+          </Link>
         </div>
       </div>
     );
